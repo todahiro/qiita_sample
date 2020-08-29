@@ -6,23 +6,35 @@ import 'package:qiita_sample/screens/flutter_article/flutter_article_screen_mode
 import 'package:qiita_sample/screens/qiita_article/article_detail_screen.dart';
 
 class FlutterArticleScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<FlutterArticleScreenModel>(context, listen: false);
-    Future(() => model.getFlutterArticle());
+    final model = Provider.of<FlutterArticleScreenModel>(
+      context,
+      listen: false,
+    );
+    Future(
+      () => model.getFlutterArticle(),
+    );
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Qiita Sample',
+          ),
+          centerTitle: true,
+        ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Consumer<FlutterArticleScreenModel>(
-            builder: (context, model, child){
+            builder: (context, model, child) {
               return ListView.builder(
                 itemCount: model.articles.length,
-                itemBuilder: (context, int position)
-                => FlutterArticleItem(
+                itemBuilder: (context, int position) => FlutterArticleItem(
                   qiitaInfo: model.articles[position],
-                  onArticleClicked: (qiitaInfo) => _openArticleWebPage(qiitaInfo, context),
+                  onArticleClicked: (qiitaInfo) => _openArticleWebPage(
+                    qiitaInfo,
+                    context,
+                  ),
                 ),
               );
             },
@@ -32,14 +44,16 @@ class FlutterArticleScreen extends StatelessWidget {
     );
   }
 
-  _openArticleWebPage(QiitaInfo qiitaInfo, BuildContext context) {
-    print("_openArticleWebPage: ${qiitaInfo.url}");
-    Navigator.of(context).push (
+  _openArticleWebPage(
+    QiitaInfo qiitaInfo,
+    BuildContext context,
+  ) {
+    Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ArticleDetailScreen(
           qiitaInfo: qiitaInfo,
-        )
-      )
+        ),
+      ),
     );
   }
 }

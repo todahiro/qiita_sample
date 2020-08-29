@@ -4,14 +4,28 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class ArticleDetailScreen extends StatelessWidget {
   ArticleDetailScreen({@required this.qiitaInfo});
+
   final QiitaInfo qiitaInfo;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: WebView(
-        initialUrl: qiitaInfo.url,
-        javascriptMode: JavascriptMode.unrestricted,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Expanded(
+            child: Text(
+              qiitaInfo.title,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 13,
+              ),
+            ),
+          ),
+        ),
+        body: WebView(
+          initialUrl: qiitaInfo.url,
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
       ),
     );
   }

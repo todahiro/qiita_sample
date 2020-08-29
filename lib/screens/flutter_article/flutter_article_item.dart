@@ -21,16 +21,12 @@ class FlutterArticleItem extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Image.network(qiitaInfo.qiitaUser.profileImageUrl),
-                )
-              ),
-              Expanded(
-                flex: 4,
-                child: Text(qiitaInfo.title)
-              )
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Image.network(qiitaInfo.qiitaUser.profileImageUrl),
+                  )),
+              Expanded(flex: 4, child: Text(qiitaInfo.title))
             ],
           ),
         ),
