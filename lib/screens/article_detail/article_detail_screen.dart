@@ -9,23 +9,21 @@ class ArticleDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Expanded(
-            child: Text(
-              qiitaInfo.title,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 13,
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Expanded(
+          child: Text(
+            qiitaInfo.title,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 13,
             ),
           ),
         ),
-        body: WebView(
-          initialUrl: qiitaInfo.url,
-          javascriptMode: JavascriptMode.unrestricted,
-        ),
+      ),
+      body: WebView(
+        initialUrl: qiitaInfo.url,
+        javascriptMode: JavascriptMode.unrestricted,
       ),
     );
   }
