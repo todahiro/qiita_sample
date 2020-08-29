@@ -15,6 +15,7 @@ class FlutterArticleScreen extends StatelessWidget {
     Future(
       () => model.getFlutterArticle(),
     );
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
