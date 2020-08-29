@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qiita_sample/screens/flutter_article/flutter_article_screen.dart';
-import 'package:qiita_sample/screens/flutter_article/flutter_article_screen_model.dart';
+import 'package:qiita_sample/screens/article/article_screen.dart';
+import 'package:qiita_sample/screens/article/article_screen_model.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider<FlutterArticleScreenModel>(
-      create: (context) => FlutterArticleScreenModel(),
+    ChangeNotifierProvider<ArticleScreenModel>(
+      create: (context) => ArticleScreenModel(),
       child: MyApp(),
     ),
   );
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FlutterArticleScreen(),
+      home: ArticleScreen(),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:qiita_sample/data/api/qiita_api_client.dart';
 import 'package:qiita_sample/data/entities/qiita_info.dart';
 
-class FlutterArticleScreenModel extends ChangeNotifier {
+class ArticleScreenModel extends ChangeNotifier {
   final api = QiitaApiClient.create();
   List<QiitaInfo> _articles = List();
 

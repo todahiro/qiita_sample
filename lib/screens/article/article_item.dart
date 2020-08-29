@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qiita_sample/data/entities/qiita_info.dart';
 
-class FlutterArticleItem extends StatelessWidget {
-  FlutterArticleItem({
+class ArticleItem extends StatelessWidget {
+  ArticleItem({
     this.qiitaInfo,
     this.onArticleClicked,
   });
