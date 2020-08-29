@@ -24,9 +24,7 @@ class ArticleScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(
-          8,
-        ),
+        padding: const EdgeInsets.all(8),
         child: Consumer<ArticleScreenModel>(
           builder: (context, model, child) {
             return ListView.builder(
