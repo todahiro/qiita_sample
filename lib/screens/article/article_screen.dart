@@ -23,30 +23,37 @@ class ArticleScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Consumer<ArticleScreenModel>(
-          builder: (context, model, child) {
-            return ListView.builder(
-              itemCount: model.articles.length,
-              itemBuilder: (context, int position) => ArticleItem(
-                qiitaInfo: model.articles[position],
-                onArticleClicked: (qiitaInfo) => _openArticleWebPage(
-                  qiitaInfo,
-                  context,
-                ),
+      body: _List(),
+    );
+  }
+}
+
+class _List extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Consumer<ArticleScreenModel>(
+        builder: (context, model, child) {
+          return ListView.builder(
+            itemCount: model.articles.length,
+            itemBuilder: (context, int position) => ArticleItem(
+              qiitaInfo: model.articles[position],
+              onArticleClicked: (qiitaInfo) => _openArticleWebPage(
+                qiitaInfo,
+                context,
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
   _openArticleWebPage(
-    QiitaInfo qiitaInfo,
-    BuildContext context,
-  ) {
+      QiitaInfo qiitaInfo,
+      BuildContext context,
+      ) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ArticleDetailScreen(
