@@ -8,7 +8,7 @@ part 'qiita_info.g.dart';
 
 @freezed
 abstract class QiitaInfo with _$QiitaInfo {
-  factory QiitaInfo ({
+  factory QiitaInfo({
     String title,
     String url,
     @JsonKey(name: 'user') QiitaUser qiitaUser,

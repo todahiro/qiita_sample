@@ -40,8 +40,8 @@ class _List extends StatelessWidget {
             itemBuilder: (context, int position) => ArticleItem(
               qiitaInfo: model.articles[position],
               onArticleClicked: (qiitaInfo) => _openArticleWebPage(
-                qiitaInfo,
                 context,
+                qiitaInfo,
               ),
             ),
           );
@@ -51,9 +51,9 @@ class _List extends StatelessWidget {
   }
 
   _openArticleWebPage(
-      QiitaInfo qiitaInfo,
-      BuildContext context,
-      ) {
+    BuildContext context,
+    QiitaInfo qiitaInfo,
+  ) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ArticleDetailScreen(

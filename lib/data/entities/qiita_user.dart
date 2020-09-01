@@ -10,5 +10,7 @@ abstract class QiitaUser with _$QiitaUser {
   factory QiitaUser({
     @JsonKey(name: 'profile_image_url') final String profileImageUrl,
   }) = _QiitaUser;
-  factory QiitaUser.fromJson(Map<String, dynamic> json) => _$QiitaUserFromJson(json);
+
+  factory QiitaUser.fromJson(Map<String, dynamic> json) =>
+      _$QiitaUserFromJson(json);
 }
