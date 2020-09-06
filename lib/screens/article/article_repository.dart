@@ -3,7 +3,7 @@ import 'package:qiita_sample/data/entities/qiita_info.dart';
 
 class ArticleRepository {
   final _api = QiitaApiClient.create();
-  Future<List<QiitaInfo>> getFlutterArticle() async {
+  Future<List<QiitaInfo>> getFlutterArticles() async {
     return await _api.getFlutterArticles();
   }
 }

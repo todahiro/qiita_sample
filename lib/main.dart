@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:qiita_sample/screens/article/article_repository.dart';
 import 'package:qiita_sample/screens/article/article_screen.dart';
-import 'package:qiita_sample/screens/article/article_screen_model.dart';
+import 'package:qiita_sample/screens/article/article_state.dart';
+import 'package:qiita_sample/screens/article/article_state_notifier.dart';
 
-void main() {
-  runApp(
-    ChangeNotifierProvider<ArticleScreenModel>(
-      create: (context) => ArticleScreenModel(),
-      child: MyApp(),
-    ),
-  );
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -21,7 +16,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ArticleScreen(),
+      home: StateNotifierProvider<ArticleStateNotifier, ArticleState>(
+        create: (_) {
+          return ArticleStateNotifier(
+            ArticleRepository(),
+          );
+        },
+        builder: (_, __) => ArticleScreen(),
+      ),
     );
   }
 }
