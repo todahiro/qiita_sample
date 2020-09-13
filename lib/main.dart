@@ -17,12 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: StateNotifierProvider<ArticleStateNotifier, ArticleState>(
-        create: (_) {
-          return ArticleStateNotifier(
-            ArticleRepository(),
-          );
-        },
-        builder: (_, __) => ArticleScreen(),
+        create: (_) => ArticleStateNotifier(
+          ArticleRepository(),
+        ),
+        child: ArticleScreen(),
       ),
     );
   }
