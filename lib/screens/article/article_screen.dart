@@ -23,7 +23,7 @@ class ArticleScreen extends StatelessWidget {
 class _List extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final articles = context.select((ArticleState model) => model.articles);
+    final articles = context.select((ArticleState state) => state.articles);
     return ListView.builder(
       itemCount: articles.length,
       itemBuilder: (context, int position) => ArticleItem(
