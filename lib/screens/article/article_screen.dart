@@ -21,32 +21,36 @@ class ArticleScreen extends StatelessWidget {
   }
 }
 
-class _List extends ConsumerWidget {
-  final stateNotifier = StateNotifierProvider(
-        (ref) => ArticleStateNotifier(
+class _List extends StatelessWidget {
+  final articleStateNotifier = StateNotifierProvider(
+    (_) => ArticleStateNotifier(
       ArticleRepository(),
     ),
   );
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final state = watch(stateNotifier.state);
-    return ListView.builder(
-      itemCount: state.articles.length,
-      itemBuilder: (context, int position) => ArticleItem(
-        qiitaInfo: state.articles[position],
-        onArticleClicked: (qiitaInfo) => _openArticleWebPage(
-          context,
-          qiitaInfo,
-        ),
-      ),
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder: (context, watch, child) {
+        final state = watch(articleStateNotifier.state);
+        return ListView.builder(
+          itemCount: state.articles.length,
+          itemBuilder: (context, int position) => ArticleItem(
+            qiitaInfo: state.articles[position],
+            onArticleClicked: (qiitaInfo) => _openArticleWebPage(
+              context,
+              qiitaInfo,
+            ),
+          ),
+        );
+      },
     );
   }
 
   void _openArticleWebPage(
-      BuildContext context,
-      QiitaInfo qiitaInfo,
-      ) {
+    BuildContext context,
+    QiitaInfo qiitaInfo,
+  ) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ArticleDetailScreen(

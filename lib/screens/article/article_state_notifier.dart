@@ -3,8 +3,7 @@ import 'package:state_notifier/state_notifier.dart';
 
 import 'article_state.dart';
 
-class ArticleStateNotifier extends StateNotifier<ArticleState>
-    with LocatorMixin {
+class ArticleStateNotifier extends StateNotifier<ArticleState> {
   ArticleStateNotifier(this.repository) : super(ArticleState()) {
     _getFlutterArticles();
   }
