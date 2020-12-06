@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:qiita_sample/screens/article/article_repository.dart';
 import 'package:qiita_sample/screens/article/article_screen.dart';
-import 'package:qiita_sample/screens/article/article_state.dart';
-import 'package:qiita_sample/screens/article/article_state_notifier.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,14 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StateNotifierProvider<ArticleStateNotifier, ArticleState>(
-        create: (_) {
-          return ArticleStateNotifier(
-            ArticleRepository(),
-          );
-        },
-        builder: (_, __) => ArticleScreen(),
-      ),
+      home: ArticleScreen(),
     );
   }
 }
