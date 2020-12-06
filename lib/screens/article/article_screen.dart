@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qiita_sample/data/entities/qiita_info.dart';
 import 'package:qiita_sample/screens/article/article_item.dart';
-import 'package:qiita_sample/screens/article/article_state.dart';
+import 'package:qiita_sample/screens/article/article_repository.dart';
+import 'package:qiita_sample/screens/article/article_state_notifier.dart';
 import 'package:qiita_sample/screens/article_detail/article_detail_screen.dart';
 
 class ArticleScreen extends StatelessWidget {
@@ -20,14 +21,20 @@ class ArticleScreen extends StatelessWidget {
   }
 }
 
-class _List extends StatelessWidget {
+class _List extends ConsumerWidget {
+  final stateNotifier = StateNotifierProvider(
+        (ref) => ArticleStateNotifier(
+      ArticleRepository(),
+    ),
+  );
+
   @override
-  Widget build(BuildContext context) {
-    final articles = context.select((ArticleState model) => model.articles);
+  Widget build(BuildContext context, ScopedReader watch) {
+    final state = watch(stateNotifier.state);
     return ListView.builder(
-      itemCount: articles.length,
+      itemCount: state.articles.length,
       itemBuilder: (context, int position) => ArticleItem(
-        qiitaInfo: articles[position],
+        qiitaInfo: state.articles[position],
         onArticleClicked: (qiitaInfo) => _openArticleWebPage(
           context,
           qiitaInfo,
@@ -36,7 +43,7 @@ class _List extends StatelessWidget {
     );
   }
 
-  _openArticleWebPage(
+  void _openArticleWebPage(
       BuildContext context,
       QiitaInfo qiitaInfo,
       ) {

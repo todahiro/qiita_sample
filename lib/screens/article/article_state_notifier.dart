@@ -3,19 +3,13 @@ import 'package:state_notifier/state_notifier.dart';
 
 import 'article_state.dart';
 
-class ArticleStateNotifier extends StateNotifier<ArticleState> with LocatorMixin {
-  ArticleStateNotifier(this.repository)
-      : super(
-          const ArticleState(),
-        );
-  final ArticleRepository repository;
-
-  @override
-  void initState() {
-    super.initState();
-
+class ArticleStateNotifier extends StateNotifier<ArticleState>
+    with LocatorMixin {
+  ArticleStateNotifier(this.repository) : super(ArticleState()) {
     _getFlutterArticles();
   }
+
+  final ArticleRepository repository;
 
   Future<void> _getFlutterArticles() async {
     var flutterArticles = await repository.getFlutterArticles();
