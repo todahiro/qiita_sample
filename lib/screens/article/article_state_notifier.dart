@@ -11,8 +11,12 @@ class ArticleStateNotifier extends StateNotifier<ArticleState> {
   final ArticleRepository repository;
 
   Future<void> _getFlutterArticles() async {
+    state = state.copyWith(
+      showLoadingIndicator: true,
+    );
     var flutterArticles = await repository.getFlutterArticles();
     state = state.copyWith(
+      showLoadingIndicator: false,
       articles: flutterArticles,
     );
   }

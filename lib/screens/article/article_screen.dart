@@ -33,15 +33,20 @@ class _List extends StatelessWidget {
     return Consumer(
       builder: (context, watch, child) {
         final state = watch(articleStateNotifier.state);
-        return ListView.builder(
-          itemCount: state.articles.length,
-          itemBuilder: (context, int position) => ArticleItem(
-            qiitaInfo: state.articles[position],
-            onArticleClicked: (qiitaInfo) => _openArticleWebPage(
-              context,
-              qiitaInfo,
+        return Stack(
+          children: [
+            ListView.builder(
+              itemCount: state.articles.length,
+              itemBuilder: (context, int position) => ArticleItem(
+                qiitaInfo: state.articles[position],
+                onArticleClicked: (qiitaInfo) => _openArticleWebPage(
+                  context,
+                  qiitaInfo,
+                ),
+              ),
             ),
-          ),
+            state.showLoadingIndicator ? Center(child: const CircularProgressIndicator()) : SizedBox.shrink(),
+          ],
         );
       },
     );
