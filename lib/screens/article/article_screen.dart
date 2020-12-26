@@ -46,7 +46,9 @@ class _List extends StatelessWidget {
             loading: () => Center(
               child: CircularProgressIndicator(),
             ),
-            error: (_, __) => SizedBox.shrink(),
+            error: (_, __) => Center(
+              child: Text('データの取得に失敗しました。'),
+            ),
         );
       },
     );
