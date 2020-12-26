@@ -4,11 +4,11 @@ import 'package:qiita_sample/data/entities/qiita_info.dart';
 class ArticleItem extends StatelessWidget {
   ArticleItem({
     this.qiitaInfo,
-    this.onArticleClicked,
+    this.onPressed,
   });
 
   final QiitaInfo qiitaInfo;
-  final ValueChanged onArticleClicked;
+  final ValueChanged onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ArticleItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: InkWell(
-        onTap: () => onArticleClicked(
+        onTap: () => onPressed(
           qiitaInfo,
         ),
         child: SizedBox(
@@ -38,6 +38,8 @@ class ArticleItem extends StatelessWidget {
                 flex: 4,
                 child: Text(
                   qiitaInfo.title,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                 ),
               )
             ],
