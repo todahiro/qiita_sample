@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:qiita_sample/data/entities/qiita_info.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class ArticleDetailScreen extends StatefulWidget {
   ArticleDetailScreen({
@@ -14,43 +14,31 @@ class ArticleDetailScreen extends StatefulWidget {
 }
 
 class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
-  num position = 1;
+  double progress = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Expanded(
-          child: Text(
-            widget.qiitaInfo.title,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 13,
-            ),
+        title: Text(
+          widget.qiitaInfo.title,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: 13,
           ),
         ),
       ),
-      body: IndexedStack(
-        index: position,
+      body: Column(
         children: [
-          WebView(
-            initialUrl: widget.qiitaInfo.url,
-            javascriptMode: JavascriptMode.unrestricted,
-            onPageStarted: (_) {
-              setState(() {
-                position = 1;
-              });
-            },
-            onPageFinished: (_) {
-              setState(() {
-                position = 0;
-              });
-            },
-          ),
-          Container(
-            color: Colors.white,
-            child: Center(
-              child: CircularProgressIndicator(),
+          progress < 1.0 ? LinearProgressIndicator(value: progress) : SizedBox.shrink(),
+          Expanded(
+            child: InAppWebView(
+              initialUrl: widget.qiitaInfo.url,
+              onProgressChanged: (InAppWebViewController controller, int progress) {
+                setState(() {
+                  this.progress = progress / 100;
+                });
+              },
             ),
           ),
         ],
