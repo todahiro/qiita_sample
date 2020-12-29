@@ -34,7 +34,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
           Expanded(
             child: InAppWebView(
               initialUrl: widget.qiitaInfo.url,
-              onProgressChanged: (InAppWebViewController controller, int progress) {
+              onProgressChanged: (_, int progress) {
                 setState(() {
                   this.progress = progress / 100;
                 });
