@@ -22,7 +22,7 @@ class ArticleScreen extends StatelessWidget {
 }
 
 class _List extends StatelessWidget {
-  final articleStateNotifier = StateNotifierProvider(
+  final articleProvider = StateNotifierProvider(
     (_) => ArticleStateNotifier(
       ArticleRepository(),
     ),
@@ -32,7 +32,7 @@ class _List extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, watch, child) {
-        final state = watch(articleStateNotifier.state);
+        final state = watch(articleProvider.state);
         return ListView.builder(
           itemCount: state.articles.length,
           itemBuilder: (context, int position) => ArticleItem(
