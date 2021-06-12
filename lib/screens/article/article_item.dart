@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:qiita_sample/data/entities/qiita_info.dart';
+import 'package:qiita_sample/data/entities/article.dart';
 
 class ArticleItem extends StatelessWidget {
   ArticleItem({
-    this.qiitaInfo,
-    this.onArticleClicked,
+    required this.qiitaInfo,
+    required this.onArticleClicked,
   });
 
-  final QiitaInfo qiitaInfo;
+  final Article qiitaInfo;
   final ValueChanged onArticleClicked;
 
   @override
@@ -30,7 +30,7 @@ class ArticleItem extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(4),
                   child: Image.network(
-                    qiitaInfo.qiitaUser.profileImageUrl,
+                    qiitaInfo.user.profileImageUrl,
                   ),
                 ),
               ),

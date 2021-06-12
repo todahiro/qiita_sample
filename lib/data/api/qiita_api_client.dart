@@ -1,5 +1,4 @@
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:qiita_sample/data/entities/qiita_info.dart';
+import 'package:qiita_sample/data/entities/article.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -11,10 +10,9 @@ abstract class QiitaApiClient {
 
   static QiitaApiClient create() {
     final dio = Dio();
-    dio.interceptors.add(PrettyDioLogger());
     return QiitaApiClient(dio);
   }
 
   @GET("/tags/flutter/items?per_page=50")
-  Future<List<QiitaInfo>> getFlutterArticles();
+  Future<List<Article>> getFlutterArticles();
 }
