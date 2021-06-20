@@ -15,7 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Qiita Sample',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+          color: Color(0xFF55c500),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       home: ArticleScreen(),
     );

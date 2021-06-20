@@ -11,15 +11,15 @@ class ArticleDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Expanded(
-          child: Text(
-            qiitaInfo.title,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 13,
-            ),
+        title: Text(
+          qiitaInfo.title,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: 13,
           ),
+          maxLines: 2,
         ),
+        centerTitle: true,
       ),
       body: WebView(
         initialUrl: qiitaInfo.url,
