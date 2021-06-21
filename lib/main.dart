@@ -16,9 +16,13 @@ class MyApp extends StatelessWidget {
       title: 'Qiita Sample',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          color: Color(0xFF55c500),
-          titleTextStyle: TextStyle(
-            color: Colors.white,
+          color: Colors.white,
+          textTheme: TextTheme(
+            headline6: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF55c500),
+            ),
           ),
         ),
       ),
