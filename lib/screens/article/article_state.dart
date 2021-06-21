@@ -9,5 +9,8 @@ part 'article_state.freezed.dart';
 class ArticleState with _$ArticleState {
   const factory ArticleState({
     @Default(AsyncValue.loading()) AsyncValue<List<Article>> articles,
+    @Default(true) bool showAppbar,
+    @Default(false) bool isScrollingDown,
+
   }) = _ArticleState;
 }
